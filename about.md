@@ -17,8 +17,6 @@ Know a little about front end and Java development.
 菜鸟程序员，了解一些 前端 基本概念和 Java 的简单用法。
 <p>
 
-
-
 <h3> Thanks / 感谢 </h3>  
 
 <p>

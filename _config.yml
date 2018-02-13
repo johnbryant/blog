@@ -1,6 +1,6 @@
 # Basic
 title: Liang Zhang
-subtitle: Record the growth in technology
+subtitle: Move fast, be bold
 description: Change takes time
 # 头像里面的标题
 avatarTitle: John Zhang
@@ -48,7 +48,7 @@ blog_button:
 
 # Navigation buttons in the front page.s
 nav:
-    - {title: Articles, description: archive, url: '/articles'}   
+    - {title: Articles, description: archive, url: '/archive'}   
     - {title: Tags, description: tags, url: '/tags'}      
     - {title: About, description: about, url: '/about'}      
     
