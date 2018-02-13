@@ -6,8 +6,8 @@ description: Change takes time
 avatarTitle: John Zhang
 # 头像里面的描述
 avatarDesc: A interesting guy
-# url: "https://johnbryant.github.io/blog"
-baseurl: 'https://johnbryant.github.io/blog'
+url: https://johnbryant.github.io
+baseurl: /blog
 
 # Comment
 #comment:
@@ -49,9 +49,9 @@ blog_button:
 
 # Navigation buttons in the front page.s
 nav:
-    - {title: Articles, description: archive, url: '/blog/archive'}   
-    - {title: Tags, description: tags, url: '/blog/tags'}      
-    - {title: About, description: about, url: '/blog/about'}      
+    - {title: Articles, description: archive, url: 'archive'}   
+    - {title: Tags, description: tags, url: 'tags'}      
+    - {title: About, description: about, url: 'about'}      
     
 
 # Pagination
