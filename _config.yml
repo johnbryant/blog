@@ -6,8 +6,8 @@ description: Change takes time
 avatarTitle: John Zhang
 # 头像里面的描述
 avatarDesc: A interesting guy
-url: "https://johnbryant.github.io/blog"
-baseurl: "/blog"
+# url: "https://johnbryant.github.io/blog"
+baseurl: /blog
 # Comment
 #comment:
     #disqus: leopard
