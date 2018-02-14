@@ -45,7 +45,7 @@ cover_color: clear
 
 # The blog button should not be removed.
 blog_button:
-    {title: Homepage, url: '/blog/#'}
+    {title: Homepage, url: '/blog/#blog'}
 
 # Navigation buttons in the front page.s
 nav:
@@ -57,6 +57,6 @@ nav:
 # Pagination
 gems: [jekyll-paginate,jekyll-sitemap]
 paginate: 10
-paginate_path: "page/:num/"
+paginate_path: "/page/:num/"
 
 
