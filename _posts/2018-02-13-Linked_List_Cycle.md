@@ -3,7 +3,7 @@ layout: post
 title: "Linked List Cycle"
 date: 2018-02-13 
 description: "Given a linked list, determine if it has a cycle in it."
-tag: two pointers
+tags: two_pointers linked_list
 ---   
 
 ## Description

@@ -3,7 +3,7 @@ layout: post
 title: "Product of Array Except Self"
 date: 2018-02-18
 description: "Given an array nums[], return an array such that output[i] is equal to the product of all the elements of nums except nums[i]"
-tag: Array
+tags: array
 ---   
 
 ## Description

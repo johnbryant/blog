@@ -54,6 +54,11 @@
       ga('create', '{{site.ga.id}}', '{{site.ga.host}}');
       ga('send', 'pageview');
   </script>
+  
+  {% endif %}
+<!-- site.tags -->
+  {% if site.tags != "" %}
+  {% include collecttags.html %}
   {% endif %}
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
