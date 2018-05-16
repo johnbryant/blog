@@ -48,21 +48,21 @@ space: O(1)。 因为在原数组上进行操作。
 
 **Let's make the problem more complex**
 
-## Description | 描述
+## Description
 Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length.
 
 Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
 
 依旧是在O(1)空间内去重，不过这次，允许每个元素最多出现2次。
 
-## Analysis | 分析
+## Analysis
 还是相同的思路，不过这次要增加一个变量来判断重复的次数，当重复次数为2，则保留，当次数大于2，则忽略。
 
 Need a variable to count the repeat, when repeating 2 times, keep the value, otherwise, remove it.
 
 
-## Approach | 实现
-###Approach #1 (My solution)
+## Approach
+### Approach #1 (My solution)
 ```
 public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
@@ -92,7 +92,7 @@ time: O(n)
 
 space: O(1)
 
-###Approach #2 (More elegant)
+### Approach #2 (More elegant)
 
 ```
 public int removeDuplicates(int[] nums) {
