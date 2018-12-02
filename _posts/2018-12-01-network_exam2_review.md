@@ -228,7 +228,7 @@ forever
 
 #### Hierarchical OSPF
 
-![hierarchical_OSPF](../images/posts/hierarchical_OSPF.png)
+![hierarchical_OSPF](/blog/images/posts/hierarchical_OSPF.png)
 
 - two-level hierarchy: local area, backbone
 
