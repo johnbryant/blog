@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Computer Network Exam2 Review outline"
 date: 2018-12-01
@@ -7,9 +6,13 @@ description: "Chapter 4,5,8,9"
 
 tags: network
 
+
+
 ---
 
 ## network layer
+
+- primary role: to move packets from a send host to a receiving host
 
 ### two key functions
 
@@ -37,9 +40,76 @@ tags: network
 
 - two approaches:
 
+  - ![traditional_control_plane](/blog/images/posts/2018-12-01-network_exam2_review/traditional_control_plane.png)
+
   - traditional routing algorighms - implemented in routers
 
+  - ![SDN](/blog/images/posts/2018-12-01-network_exam2_review/SDN.png)
+
   - SDN - implemented in (remote) servers
+
+
+
+### CIDR
+
+- Classless Interdomain Routing
+
+- used to generalize the notion of subnet addressing (like the scope of the IP address in a organization)
+
+- 32-bit IP address is divided into two parts and has the form `a.b.c.d/x`, where x indicates the number of bits in the first part of the address
+
+- Example: the ISP may itself have benn allocated the address block `200.23.16.0/20`, then it divides its address block into eight equal-sized contiguous address blocks and give one of these address blocks out to each of up to eight organizations that are supported by this ISP, as shown below:
+
+  ```
+  ISP’s block:     200.23.16.0/20     11001000 00010111 00010000 00000000
+   
+  Organization 0   200.23.16.0/23     11001000 00010111 00010000 00000000
+  Organization 1   200.23.18.0/23     11001000 00010111 00010010 00000000
+  Organization 2   200.23.20.0/23     11001000 00010111 00010100 00000000 ... ...              ...
+  Organization 7   200.23.30.0/23     11001000 00010111 00011110 00000000
+  ```
+
+  
+
+### DHCP
+
+- Dynamic Host Configuration Protocol
+
+- dynamically get address: *plug-and-play*
+
+  - host broadcasts `DHCP discover` msg
+
+  - DHCP server responds with `DHCP offer` msg
+
+  - host request IP address: `DHCP request` msg
+
+  - DHCP server sends address: `DHCP ack` msg
+
+- DHCP use UDP, because the host has no idea with DHCP server's IP address at beginner, so it **broadcast** the DHCP discover msg. TCP doesn't support broadcast.
+
+### get a datagram from source to dest
+
+- from A (223.1.1.1) to B (223.1.1.2): send datagram directly from A to B
+
+- from A (223.1.1.1) to C (223.1.2.2): send from A via 223.1.1.4 (gateway) and 223.1.2.9 (gateway) to B
+
+### IP Fragmentation & reassembly
+
+- reason: link layer have MTU (max transfer size), different link types, different MTUs
+
+- large IP datagram divided into small
+
+- reassembleed only at final destination
+
+- e.g: datasize is 4000 ( data 3980 + header 20), MTU is 1500. we can divide it to 3 part
+
+  - length = 1500 (data 1480 + header 20), offset = 0, fragflag = 1
+
+  - length = 1500 (data 1480 + header 20), offset = 1480, fragflag = 1
+
+  - length = 1040 (data 1020 + header 20), offset = 2960, fragflag = 0
+
+
 
 ### routing algorighm
 
@@ -100,47 +170,6 @@ forever
 | LS        | O(nE) msgs sent each       | O(n^2)                         | each node compute only its own table |
 | DV        | exchange between neighbors | varies (from O(n) to infinity) | each node uses other's data          |
 
-### DHCP
-
-- Dynamic Host Configuration Protocol
-
-- dynamically get address: *plug-and-play*
-
-  - host broadcasts `DHCP discover` msg
-
-  - DHCP server responds with `DHCP offer` msg
-
-  - host request IP address: `DHCP request` msg
-
-  - DHCP server sends address: `DHCP ack` msg
-
-- DHCP use UDP, because the host has no idea with DHCP server's IP address at beginner, so it **broadcast** the DHCP discover msg. TCP doesn't support broadcast.
-
-
-
-### get a datagram from source to dest
-
-- from A (223.1.1.1) to B (223.1.1.2): send datagram directly from A to B
-
-- from A (223.1.1.1) to C (223.1.2.2): send from A via 223.1.1.4 and 223.1.2.9 to B
-
-### 
-
-
-- reason: link layer have MTU (max transfer size), different link types, different MTUs
-
-- large IP datagram divided into small
-
-- reassembleed only at final destination
-
-- e.g: datasize is 4000 ( data 3980 + header 20), MTU is 1500. we can divide it to 3 part
-
-  - length = 1500 (data 1480 + header 20), offset = 0, fragflag = 1
-
-  - length = 1500 (data 1480 + header 20), offset = 1480, fragflag = 1
-
-  - length = 1040 (data 1020 + header 20), offset = 2960, fragflag = 0
-
 
 
 ### ICMP
@@ -155,11 +184,11 @@ forever
 
 - ICMP msgs are carried in IP datagram
 
-
-
 ### Scalable routing
 
 - aggregate routers into regions known as `autonomous system` (AS)
+
+- why AS: scale and administrative autonomy
 
 - intra-AS routing
 
@@ -183,8 +212,6 @@ forever
   - learn which dests are reachable through AS2, which through AS3, ...
 
   - propagate this reachability info to all routers in AS1
-
-
 
 ### Intra-AS Routing
 
@@ -214,13 +241,11 @@ forever
 
 - pros
 
-  - **security**: all OSPF message authenticated
+  - **security**: exchanges between OSPF routers are authenticated
 
-  - **multiple** same-cost **paths** allowed
+  - **multiple same-cost paths** allowed
 
-  - for each link, multiple cost metrics for different **TOS** (type of service)
-
-  - integrated uni- and **multi-cast** support
+  - integrated support for unicast and **multi-cast** routing
 
     - multi-cast OSPF use same topology data base as OSPF
 
@@ -228,7 +253,7 @@ forever
 
 #### Hierarchical OSPF
 
-![hierarchical_OSPF](/blog/images/posts/hierarchical_OSPF.png)
+![hierarchical_OSPF](/blog/images/posts/2018-12-01-network_exam2_review/hierarchical_OSPF.png)
 
 - two-level hierarchy: local area, backbone
 
@@ -244,4 +269,66 @@ forever
 
 
 
+### inter-AS routing
 
+- BGP (Border Gateway Protocol)
+
+- BGP provides each router:
+
+  - obtain prefix reachability information from neighboring ASs (eg. AS2, AS3, X; AS3, X)
+
+  - determine the "best" routes to the prefixes.
+
+- BGP provides each AS a means to:
+
+  - **eBGP (external BGP)**: obtain subnet reachability information from neighboring ASes
+
+  - **iBGP (internal BGP)**: propagate reachability information to all AS-internal routers
+
+  - determine "good" routes to other networks based on reachability information and policy
+
+- allow subnet to advertise its existence to rest of Internet
+
+- BGP connection attributes:
+
+  - AS-PATH
+
+  - NEXT-HOP
+
+![hot_potato_routing](/blog/images/posts/2018-12-01-network_exam2_review/hot_potato_routing.png)
+
+- practice use: **Hot Potato routing**
+
+#### BGP route selection priority (from 1 to 4)
+
+1. local preference value attribute: **policy** decision
+
+2. shortest **AS-PATH**
+
+3. closest **NEXT-HOP** router: hot potato routing
+
+4. additional criteria
+
+#### Different: intra-, inter-AS routing
+
+- policy
+
+  - inter-AS: admin wants control over how its traffic routed, who routes through its net
+
+  - intra-AS: single admin, no policy need
+
+- scale
+
+  - hierarchical routing saves table size, reduced update traffic
+
+- performance
+
+  - intra-AS: can focus on performance
+
+  - inter-AS: policy may dominate over performance
+
+
+
+### SDN
+
+- software defined networking
