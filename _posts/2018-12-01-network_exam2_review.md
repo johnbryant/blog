@@ -7,6 +7,8 @@ description: "Chapter 4,5,8,9"
 
 tags: network
 
+---
+
 ## network layer
 
 ### two key functions
@@ -16,8 +18,6 @@ tags: network
 - **routing**: determine route taken by packets from source to destination
 
   - routing algorithms
-
-
 
 ### data plane & control plane
 
@@ -41,8 +41,6 @@ tags: network
 
   - SDN - implemented in (remote) servers
 
-
-
 ### routing algorighm
 
 #### link-state
@@ -55,23 +53,19 @@ tags: network
 Initialization:
  N’ = {u}
  for all nodes v
- 	if v is a neighbor of u
+     if v is a neighbor of u
      then D(v) = c(u, v)
-	else D(v) = ∞
-   
+    else D(v) = ∞
+
 Loop
-	find w not in N’ such that D(w) is a minimum
-	add w to N’
-	update D(v) for each neighbor v of w and not in N’:
-		D(v) = min(D(v), D(w)+ c(w, v) )
+    find w not in N’ such that D(w) is a minimum
+    add w to N’
+    update D(v) for each neighbor v of w and not in N’:
+        D(v) = min(D(v), D(w)+ c(w, v) )
     /* new cost to v is either old cost to v or known
-		least path cost to w plus cost from w to v */
+        least path cost to w plus cost from w to v */
 until N’= N
-     
-
 ```
-
-
 
 #### distance vevtor
 
@@ -90,12 +84,12 @@ Dw(y) = ? for all destinations y in N
 for each neighbor w
 send distance vector Dx = [Dx(y): y in N] to w
 loop
-	wait (until I see a link cost change to some neighbor w or
+    wait (until I see a link cost change to some neighbor w or
            until I receive a distance vector from some neighbor w)
-	for each y in N:
-		Dx(y) = minv{c(x, v) + Dv(y)}
-	if Dx(y) changed for any destination y
-		send distance vector Dx = [Dx(y): y in N] to all neighbors 18
+    for each y in N:
+        Dx(y) = minv{c(x, v) + Dv(y)}
+    if Dx(y) changed for any destination y
+        send distance vector Dx = [Dx(y): y in N] to all neighbors 18
 forever
 ```
 
@@ -130,9 +124,8 @@ forever
 
 - from A (223.1.1.1) to C (223.1.2.2): send from A via 223.1.1.4 and 223.1.2.9 to B
 
+### 
 
-
-### IP Fragmentation & Reassembly
 
 - reason: link layer have MTU (max transfer size), different link types, different MTUs
 
@@ -184,12 +177,9 @@ forever
 
   - gateways perform inter-domain routing
 
-
-
-#### Inter-AS
+#### Inter-AS task
 
 - suppose router in AS1 receives datagram destined outside of AS1, AS1 should:
-
   - learn which dests are reachable through AS2, which through AS3, ...
 
   - propagate this reachability info to all routers in AS1
@@ -208,10 +198,50 @@ forever
 
   - `IGRP` Interior Gateway Routing Protocol
 
-
-
 #### OSPF (Open Shortest Path First)
 
 - *open* : publicly available
 
 - use **link-state** algorithm
+
+- router floods OSPF  link-state advertisement to all other routers in entire AS
+
+  - carried in OSPF message directly over IP (rather than TCP or UDP)
+
+  - link state: for each attached link
+
+- IS-IS routing protocol is nearly identical to OSPF
+
+- pros
+
+  - **security**: all OSPF message authenticated
+
+  - **multiple** same-cost **paths** allowed
+
+  - for each link, multiple cost metrics for different **TOS** (type of service)
+
+  - integrated uni- and **multi-cast** support
+
+    - multi-cast OSPF use same topology data base as OSPF
+
+  - **hierarchical** OSPF in large domins
+
+#### Hierarchical OSPF
+
+![hierarchical_OSPF](../images/posts/hierarchical_OSPF.png)
+
+- two-level hierarchy: local area, backbone
+
+  - link-state advertisements only in area
+
+  - each nodes has detailed area topology; only know the direction (shorest path) to other areas
+
+- area border router: "summarize" distance to nets in own area, advertise to other area border router
+
+- backbone router: run OSPF routing limited to backbone
+
+- boundary router: connect to other AS
+
+
+
+
