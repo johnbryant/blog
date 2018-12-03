@@ -50,6 +50,31 @@ tags: network
 
 
 
+### What's inside a Router
+
+#### input port processing
+
+- destination-based forwarding
+
+- forwarding table
+
+![forwarding_table1](/blog/images/posts/2018-12-01-network_exam2_review/forwarding_table1.png)
+
+![forwarding_table2](/blog/images/posts/2018-12-01-network_exam2_review/forwarding_table2.png)
+
+- the `destination address range` can be write as `prefix`
+
+![forwarding_table3](/blog/images/posts/2018-12-01-network_exam2_review/forwarding_table3.png)
+
+- When an input packet arrives, it need to be matched the address in forwaring table. If there are **multiple matches**, the router uses the **longest prefix matching rule**:
+
+  -  it finds the longest matching entry in the table and forwards the packet to the link interface associated
+    with the longest prefix match
+
+
+
+
+
 ### CIDR
 
 - Classless Interdomain Routing
@@ -108,6 +133,54 @@ tags: network
   - length = 1500 (data 1480 + header 20), offset = 1480, fragflag = 1
 
   - length = 1040 (data 1020 + header 20), offset = 2960, fragflag = 0
+
+
+
+### IPv6
+
+- have this new:
+
+  - Expanded addresseing capability: from 32 to 128 bits
+
+  - A streamlined 40-byte header
+
+  - Flow labeling
+
+- no longer have:
+
+  - Fragmentation / reassembly
+
+  - Header checksum
+
+  - Options
+
+- Transitioning from IPv4 to IPv6
+
+  - use **tunneling**: Suppose two IPv6 nodes (B and E) want to interoperate using IPv6 datagrams but are connected to each other by intervening IPv4 routers. We refer to the intervening set of IPv4 routers between two IPv6 routers as a tunnel. Here is the prccedure:
+
+  ![tunneling](/blog/images/posts/2018-12-01-network_exam2_review/tunneling.png)
+
+
+
+### OpenFlow
+
+- match-action table
+
+- Match
+
+  - for this exam, we mainly use `Ingress port = 1`, `IP Src = 10.1.*.*`, `IP Dst = 10.2.*.*`
+
+![open_flow_match_table](../images/posts/2018-12-01-network_exam2_review/open_flow_match_table.png)
+
+- Action
+
+  - **Forwarding**: to output port
+
+  - Dropping
+
+  - Modify-field
+
+
 
 
 
@@ -170,20 +243,6 @@ forever
 | LS        | O(nE) msgs sent each       | O(n^2)                         | each node compute only its own table |
 | DV        | exchange between neighbors | varies (from O(n) to infinity) | each node uses other's data          |
 
-
-
-### ICMP
-
-- Internet Control Message protocol
-
-- used by hosts, routers, gageways to communication network-level information
-
-  - error reporting
-
-  - echo request/reply (used by ping)
-
-- ICMP msgs are carried in IP datagram
-
 ### Scalable routing
 
 - aggregate routers into regions known as `autonomous system` (AS)
@@ -212,6 +271,8 @@ forever
   - learn which dests are reachable through AS2, which through AS3, ...
 
   - propagate this reachability info to all routers in AS1
+
+
 
 ### Intra-AS Routing
 
@@ -332,3 +393,39 @@ forever
 ### SDN
 
 - software defined networking
+
+- 
+
+
+
+### ICMP
+
+- Internet Control Message protocol
+
+- used by hosts, routers, gageways to communication network-level information
+
+  - error reporting
+
+  - echo request/reply (used by ping)
+
+- ICMP msgs are carried in IP datagram
+
+- Field
+
+  - type
+
+  - code
+
+  - also contain the header the first 8 bytes of the IP datagram that caused the ICMP message to be generated
+
+
+
+### SNMP
+
+- Simple Network Management Protocol
+
+- is an application-layer protocol used to convey network-management control and information messasge between a managing server and an agent executing on behalf of that managing server
+
+- usage
+
+  - In a request-response mode, an SNMP managing server sends a requeset to an SNMP agent, who receives the request, performs some action, and sends a reply to the request
