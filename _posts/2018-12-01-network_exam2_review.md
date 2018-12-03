@@ -532,7 +532,7 @@ forever
 
 - example
 
-![block_cipher](/block/images/posts/2018-12-01-network_exam2_review/block_cipher.png)
+![block_cipher](/blo/images/posts/2018-12-01-network_exam2_review/block_cipher.png)
 
 
 
