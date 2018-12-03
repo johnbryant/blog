@@ -8,6 +8,7 @@ tags: network
 
 
 
+
 ---
 
 ## network layer
@@ -48,8 +49,6 @@ tags: network
 
   - SDN - implemented in (remote) servers
 
-
-
 ### What's inside a Router
 
 #### input port processing
@@ -69,8 +68,7 @@ tags: network
 ![forwarding_table3](/blog/images/posts/2018-12-01-network_exam2_review/forwarding_table3.png)
 
 - When an input packet arrives, it need to be matched the address in forwaring table. If there are **multiple matches**, the router uses the **longest prefix matching rule**:
-
-  -  it finds the longest matching entry in the table and forwards the packet to the link interface associated
+  - it finds the longest matching entry in the table and forwards the packet to the link interface associated
     with the longest prefix match
 
 #### Switching
@@ -103,10 +101,6 @@ tags: network
 
 ![output_port_processing](/blog/images/posts/2018-12-01-network_exam2_review/output_port_processing.png)
 
-
-
-
-
 ### CIDR
 
 - Classless Interdomain Routing
@@ -119,14 +113,12 @@ tags: network
 
   ```
   ISP’s block:     200.23.16.0/20     11001000 00010111 00010000 00000000
-   
+  
   Organization 0   200.23.16.0/23     11001000 00010111 00010000 00000000
   Organization 1   200.23.18.0/23     11001000 00010111 00010010 00000000
   Organization 2   200.23.20.0/23     11001000 00010111 00010100 00000000 ... ...              ...
   Organization 7   200.23.30.0/23     11001000 00010111 00011110 00000000
   ```
-
-  
 
 ### DHCP
 
@@ -166,8 +158,6 @@ tags: network
 
   - length = 1040 (data 1020 + header 20), offset = 2960, fragflag = 0
 
-
-
 ### IPv6
 
 ![IPv6_data_format](/blog/images/posts/2018-12-01-network_exam2_review/IPv6_data_format.png)
@@ -194,8 +184,6 @@ tags: network
 
   ![tunneling](/blog/images/posts/2018-12-01-network_exam2_review/tunneling.png)
 
-
-
 ### OpenFlow
 
 - match-action table
@@ -213,8 +201,6 @@ tags: network
   - Dropping
 
   - Modify-field
-
-
 
 ### routing algorighm
 
@@ -304,8 +290,6 @@ forever
 
   - propagate this reachability info to all routers in AS1
 
-
-
 ### Intra-AS Routing
 
 - also known as **interior gateway protocols (IGP)**
@@ -359,8 +343,6 @@ forever
 - backbone router: run OSPF routing limited to backbone
 
 - boundary router: connect to other AS
-
-
 
 ### inter-AS routing
 
@@ -420,16 +402,11 @@ forever
 
   - inter-AS: policy may dominate over performance
 
-
-
 ### SDN
 
 - software defined networking
 
 - 
-
-
-
 ### ICMP
 
 - Internet Control Message protocol
@@ -450,8 +427,6 @@ forever
 
   - also contain the header the first 8 bytes of the IP datagram that caused the ICMP message to be generated
 
-
-
 ### SNMP
 
 - Simple Network Management Protocol
@@ -461,8 +436,6 @@ forever
 - usage
 
   - In a request-response mode, an SNMP managing server sends a requeset to an SNMP agent, who receives the request, performs some action, and sends a reply to the request
-
-
 
 ### Multicast
 
@@ -491,8 +464,6 @@ forever
 - **Multicast group** is a single identifier that represents a group of receivers
 
 - IGMP (Internet Group Management Protocol) operates between a host and its directly attached router
-
-
 
 ### Network Security
 
@@ -528,13 +499,11 @@ forever
 
 - used in PGP (for secure e-mail), SSL (for securing TCP connection), and IPsec (for securing the network-layer transport)
 
--  the message to be encrypted is processed in blocks of k bits. For example, if k=64, then the message is broken into 64-bit blocks, and each block is encrypted independently
+- the message to be encrypted is processed in blocks of k bits. For example, if k=64, then the message is broken into 64-bit blocks, and each block is encrypted independently
 
 - example
 
 ![block_cipher](/blog/images/posts/2018-12-01-network_exam2_review/block_cipher.png)
-
-
 
 #### Pretty good privacy (PGP)
 
@@ -567,13 +536,9 @@ yhHJRHhGJGhgg/12EpJ+lo8gE4vB3mqJhFEvZP9t6n7G6m5Gw2
 
 - PGP does not use a message authentication code (MAC) for message integrity. It uses digital signatures.
 
-
-
 #### Secure sockets layer (SSL)
 
 - works at transport layer. Provides security to any TCP-based app using SSL services
-
-
 
 #### IPsec
 
@@ -587,12 +552,9 @@ yhHJRHhGJGhgg/12EpJ+lo8gE4vB3mqJhFEvZP9t6n7G6m5Gw2
 
   - provide secrecy, host authentication, data integrity
 
-
-
 ### Multimedia
 
 - Service model
-
   - Uninterrupted
 
   - Fast approaching real time
@@ -620,3 +582,31 @@ yhHJRHhGJGhgg/12EpJ+lo8gE4vB3mqJhFEvZP9t6n7G6m5Gw2
 - Provides standard packet format for real-time application
 
 - runs over UDP
+
+
+
+### Suppose you walk into a room, connect to Ethernet, and want to download a Web page. What are all the protocol steps that take place, starting from powering on your PC to getting the Web pageSuppose you walk into a room, connect to Ethernet, and want to download a Web
+
+1. Connect the PC to network using Ethernet cable
+
+2. Using `DHCP` the PC obtains its IP address
+
+3. PC use `ARP protocol` to obtain MAC address of first-hop routers and the local DNS server
+
+4. PC get the IP address of the web page using `DNS protocol` from the local DNS server
+
+5. PC creates the TCP socket, then prepares to perform a three-way handshake
+
+6. PC build a `TCP SYN` segment, which will be put into an `IP packets`, finally into `Ethernet frames`. PC send it to the first-hop router.
+
+7. When first-hop router receives the frams, it passes the frames up the IP layer and check its routing table. The router then sends the packets to the right interface out of all of its interfaces.
+
+8. The IP packets are then routed through the internet until they reach the server.
+
+9. The server receives the `TCP SYN` segment, a connection socket is created for the TCP connection between the server and PC. Server then return a `TCP SYNACK` segment back to PC.
+
+10. When PC receives the TCP SYNACK segment, it performs a `HTTP GET` message to the server
+
+11. The server reads the HTTP GET message, creates `HTTP response` message which contains the web page, and returns it to PC
+
+12. Finally, PC receives the HTTP response message, the browser display the web page
