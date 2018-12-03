@@ -54,6 +54,8 @@ tags: network
 
 #### input port processing
 
+![input_port_porcessing](/blog/images/posts/2018-12-01-network_exam2_review/input_port_porcessing.png)
+
 - destination-based forwarding
 
 - forwarding table
@@ -70,6 +72,36 @@ tags: network
 
   -  it finds the longest matching entry in the table and forwards the packet to the link interface associated
     with the longest prefix match
+
+#### Switching
+
+- Through the switching fabric, the packets are switched from an input port to an output port
+
+- switching can be accomplished by several ways:
+
+  - via memory
+
+    - simplest
+
+    - uder direct control of CPU
+
+  - via bus
+
+    - use shared bus
+
+    - routing processor not used
+
+    - protential blocking
+
+  - via corssbar (interconnection)
+
+    - higher BW possible (no blocking)
+
+    - more expensive
+
+#### Output port processing
+
+![output_port_processing](/blog/images/posts/2018-12-01-network_exam2_review/output_port_processing.png)
 
 
 
@@ -138,6 +170,8 @@ tags: network
 
 ### IPv6
 
+![IPv6_data_format](/blog/images/posts/2018-12-01-network_exam2_review/IPv6_data_format.png)
+
 - have this new:
 
   - Expanded addresseing capability: from 32 to 128 bits
@@ -170,7 +204,7 @@ tags: network
 
   - for this exam, we mainly use `Ingress port = 1`, `IP Src = 10.1.*.*`, `IP Dst = 10.2.*.*`
 
-![open_flow_match_table](../images/posts/2018-12-01-network_exam2_review/open_flow_match_table.png)
+![open_flow_match_table](/blog/images/posts/2018-12-01-network_exam2_review/open_flow_match_table.png)
 
 - Action
 
@@ -179,8 +213,6 @@ tags: network
   - Dropping
 
   - Modify-field
-
-
 
 
 
@@ -429,3 +461,29 @@ forever
 - usage
 
   - In a request-response mode, an SNMP managing server sends a requeset to an SNMP agent, who receives the request, performs some action, and sends a reply to the request
+
+
+
+### Multicast
+
+- In 1995, the first multicast network: MBone
+
+- DVMRP (Distance Vector Multicast Routing Protocol) can't scale to Internet size
+
+- In 1997, PIM (Protocol Independent Multicast)
+
+- Unicast
+
+  - one sender and one receiver
+
+  - concern about where the packet is going
+
+- Multicast
+
+  - one or more senders to a group of receivers
+
+  - concern about where the packet came from
+
+  - Multicast Routing uses *Reverse Path Forwarding*
+
+  - application: Interactive gaming; shared data apps
