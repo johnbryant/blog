@@ -488,6 +488,10 @@ forever
 
   - application: Interactive gaming; shared data apps
 
+- **Multicast group** is a single identifier that represents a group of receivers
+
+- IGMP (Internet Group Management Protocol) operates between a host and its directly attached router
+
 
 
 ### Network Security
@@ -586,3 +590,33 @@ yhHJRHhGJGhgg/12EpJ+lo8gE4vB3mqJhFEvZP9t6n7G6m5Gw2
 
 
 ### Multimedia
+
+- Service model
+
+  - Uninterrupted
+
+  - Fast approaching real time
+
+  - without error
+
+  - controllable
+
+#### Streaming
+
+- stored audio, video (eg, Youtube)
+
+- conversational voice/video over IP
+
+- using **HTTP** (why not UDP: UDP sends at a available rate; no data checking)
+
+#### Recovery from packet loss
+
+- FEC (forward error correction): add redundant chunk
+
+- Interleaving: divide audio data into smaller units
+
+#### RTP (Real Time Protocol)
+
+- Provides standard packet format for real-time application
+
+- runs over UDP
