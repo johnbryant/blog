@@ -487,3 +487,102 @@ forever
   - Multicast Routing uses *Reverse Path Forwarding*
 
   - application: Interactive gaming; shared data apps
+
+
+
+### Network Security
+
+#### What is network security
+
+- **Secrecy:** only sender, intended receiver should understand msg contents
+
+  - sender encrypts msg
+
+  - receiver decrypts msg
+
+- **Authentication:** sender, receiver want to confirm identity of each other
+
+- **Message Integrity:** sender receiver want to ensure message not altered
+
+#### Packet sniffing
+
+![packet_sniffing](/blog/images/posts/2018-12-01-network_exam2_review/packet_sniffing.png)
+
+- How sniffing works: Sniffing programs turn off the filter of link layer, and thus see everyones’ traffic address
+
+#### IP Spoofing
+
+![IP_spoofing](/blog/images/posts/2018-12-01-network_exam2_review/IP_spoofing.png)
+
+#### Denial of service (DOS)
+
+![DOS](/blog/images/posts/2018-12-01-network_exam2_review/DOS.png)
+
+#### Block Cipher
+
+- technique of symmetric encryption
+
+- used in PGP (for secure e-mail), SSL (for securing TCP connection), and IPsec (for securing the network-layer transport)
+
+-  the message to be encrypted is processed in blocks of k bits. For example, if k=64, then the message is broken into 64-bit blocks, and each block is encrypted independently
+
+- example
+
+![block_cipher](/block/images/posts/2018-12-01-network_exam2_review/block_cipher.png)
+
+
+
+#### Pretty good privacy (PGP)
+
+- Internet e-mail encryption scheme
+
+- use `symmetric key cryptography`, `public key cryptography`, `hash function`, and `digital signature`
+
+- A PGP signed message
+
+```pgp
+---BEGIN PGP SIGNED MESSAGE---
+Hash: SHA1
+
+Bob:My husband is out of town tonight.Passionately yours, Alice
+
+---BEGIN PGP SIGNATURE---
+Version: PGP 5.0
+Charset: noconv
+yhHJRHhGJGhgg/12EpJ+lo8gE4vB3mqJhFEvZP9t6n7G6m5Gw2
+---END PGP SIGNATURE---
+```
+
+- How can Bob know that the PGP message is send by Alice rather than Trudy?
+
+  - Alice encrypts the message digest `H(m)` with her `private key (KA-)`, and sends `KA-(H(m))` as a PGP message
+
+  - Bob receives the message and decrypts the signature using Alice's `public key (KA+)` and calcutes the message digest `KA+(KA-(H(m)))`
+
+  - If both the results are same, that is `KA+(KA-(H(m))) = H(m)`, then Bob knows that the message is created and sent by Alice
+
+- PGP does not use a message authentication code (MAC) for message integrity. It uses digital signatures.
+
+
+
+#### Secure sockets layer (SSL)
+
+- works at transport layer. Provides security to any TCP-based app using SSL services
+
+
+
+#### IPsec
+
+- for Networ- Layer Security
+
+- authentication header (AH) protocol
+
+  - provide source host authentication , data integrity, but not secrecy
+
+- encapsulation security payload (ESP) protocol
+
+  - provide secrecy, host authentication, data integrity
+
+
+
+### Multimedia
