@@ -10,7 +10,7 @@ url: https://johnbryant.github.io
 baseurl: /blog
 
 # Comment
-talkyard_server_url: https://comments-for-johnbryant-github-io
+talkyard_server_url: https://comments-for-johnbryant-github-io.talkyard.net
 
 # Social
 social:
