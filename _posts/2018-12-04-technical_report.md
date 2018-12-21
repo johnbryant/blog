@@ -9,8 +9,6 @@ description: "conclude the topics I've learned about this semester"
 
 tags: distributed_system
 
-
-
 ---
 
 In this semester, I toke the course CS 6421 Distributed Systems in George Washington University. As the following picture shows,  I learned the intro, network programming, servers and virtualization, networks, storage and fault tolerance, ordering and consistency, and scalable web service and serverless of distributed systems. Besides, I also learned some basic usages and their interactions of AWS technologies such as EC2, Lmabda, Elastic Beanstalk, and Amazon SageMaker. 
@@ -62,8 +60,6 @@ The virtualization have different types according to the virtualization degree. 
   - Runs directly on HW
 
   - Example: VMware ESXi (includes and integrates vital OS components, such as a kernel)
-
-
 
 ### Container
 
