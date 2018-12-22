@@ -7,7 +7,8 @@ date: 2018-12-09
 
 description: "conclude the topics I've learned about this semester"
 
-tags: distributed_system
+tags: Course
+
 
 ---
 

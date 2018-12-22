@@ -1,25 +1,26 @@
 ---
+
 layout: post
 title: "Linked List Cycle"
 date: 2018-02-13 
 description: "Given a linked list, determine if it has a cycle in it."
-tags: two_pointers linked_list
----   
+
+tags: TwoPointers LinkedList
+---
 
 ## Description
+
 ```
 Given a linked list, determine if it has a cycle in it.
 
 Follow up:
 Can you solve it without using extra space?
-
 ```
- 
 
 ## Solution
+
 ###Approach #1 (Hash Table)
 If ignoring the follow-up, we can use hash table. We go through each node one by one and record each node's reference in a hash table. If current node’s reference is in the hash table, then return true.
-
 
 ```
 public boolean hasCycle(ListNode head) {
@@ -34,9 +35,10 @@ public boolean hasCycle(ListNode head) {
     }
     return false;
 }
-
 ```
+
 #### Complexity analysis
+
 - Time complexity: O(n)
 - Space complexity: O(n)
 
@@ -62,8 +64,9 @@ public boolean hasCycle(ListNode head) {
     }
     return true;
 }
-
 ```
+
 #### Complexity analysis
+
 - Time complexity: O(n)
 - Space complexity: O(1)

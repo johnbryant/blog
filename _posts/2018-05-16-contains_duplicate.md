@@ -2,8 +2,8 @@
 layout: post
 title: "Contains Duplicate | 判断数组中是否有重复元素"
 date: 2018-05-16
-description: "GGiven an array of integers, find if the array contains any duplicates.."
-tags: Array HashTable 
+description: "Given an array of integers, find if the array contains any duplicates."
+tags: Array HashTable Easy Medium
 --- 
 > ~~
 >
@@ -45,43 +45,17 @@ Output: true
 ### Approach #1 (HashTable)
 ```
 public boolean containsDuplicate(int[] nums) {
-        HashSet<Integer> hs = new HashSet<Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!hs.add(nums[i])) return true;
-        }
-        return false;
-    }
-```
-#### Complexity analysis
-- Time complexity: O(n)
-- Space complexity: O(n)
-
-
-### Approach #2 (Sort)
-```
-public boolean containsDuplicate(int[] nums) {
-    Arrays.sort(nums);
-    for (int i = 1; i < nums.length; i++) {
-        if (nums[i]==nums[i-1]) return true;
-    }
-    return false;
-}
-```
-#### Complexity analysis
-- Time complexity: O(n)
-- Space complexity: O(1)
-
-
+        HashSet
 ---
 
 > **接下来，问题稍微升级一下**
-
+> 
 > **Let's make the problem more complex**
 
 ---
 
-
 ## Description 2
+
 Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.
 
 Example 1:
@@ -90,12 +64,14 @@ Example 1:
 Input: [1,2,3,1], k = 3
 Output: true
 ```
+
 Example 2:
 
 ```
 Input: [1,0,1,1], k = 1
 Output: true
 ```
+
 Example 3:
 
 ```
@@ -104,15 +80,17 @@ Output: false
 ```
 
 ## Analysis
+
 依旧是判断数组内是否有重复元素，不同的是加了一个长度限制k，所以我们要找的是在k长度内是否存在重复元素。
 
 我自己的做法是用HashMap, key记录元素值，value记录位置，当发现重复元素且位置差不超过k时返回true。
 
 另一个思路是使用HashSet，比如说，对于nums = {1,2,3,1}, k = 2来说，第一个1出现在位置0，当遍历到位置2还不是1的时候，就说明之后也不可能有值能符合条件了，所以我们就把第一个1删掉，只考虑{2,3,1}，之后以此类推，具体的做法就是使HashSet的长度保持不大于k，一旦超过，就删掉最开头的元素。
 
-
 ## Approach
+
 ### Approach #1 (HashMap)
+
 ```
 public boolean containsNearbyDuplicate(int[] nums, int k) {
     HashMap<Integer, Integer> map = new HashMap<>();
@@ -125,7 +103,9 @@ public boolean containsNearbyDuplicate(int[] nums, int k) {
     return false;
 }
 ```
+
 #### Complexity analysis
+
 - Time complexity: O(n)
 - Space complexity: O(n)
 
@@ -142,20 +122,22 @@ public boolean containsNearbyDuplicate(int[] nums, int k) {
     return false;
 }
 ```
+
 #### Complexity analysis
+
 - Time complexity: O(n)
 - Space complexity: O(min(n,k))
-
 
 ---
 
 > **继续升级问题**
-
+> 
 > **make it more complex**
 
-___
+---
 
 ## Description 3
+
 Given an array of integers, find out whether there are two distinct indices i and j in the array such that the absolute difference between nums[i] and nums[j] is at most t and the absolute difference between i and j is at most k.
 
 Example 1:
@@ -164,12 +146,14 @@ Example 1:
 Input: [1,2,3,1], k = 4, t = 0
 Output: true
 ```
+
 Example 2:
 
 ```
 Input: [1,0,1,1], k = 1, t = 0
 Output: true
 ```
+
 Example 3:
 
 ```
@@ -178,6 +162,7 @@ Output: false
 ```
 
 ## Analysis
+
 在D2多了一个长度k的基础上，这次条件又多了一个t，意思是说如果两个元素的差不超过t的话，我们就把这两个元素近似看成是duplicate。
 
 我自己做的时候是用`HashSet`，在问题2保持`HashSet`长度不超过k的基础上，每遍历到一个新值，就把该值与`HashSet`中的值逐一求差，当发现差不超过t时就返回true。当然，这样做的复杂度是`O(n*min(n,k))`，每次迭代都要遍历一遍`HashSet`。
@@ -191,11 +176,13 @@ Output: false
 另外，这个题还要考虑Integer的范围问题，两个Integer的差有可能超过Integer的最大值，所以要用到long类型。
 
 ## Approach
+
 ### Approach #1 (Linear Search)
+
 ```
 public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
     HashSet<Integer> set = new HashSet<Integer>();
-    
+
     for (int i = 0; i < nums.length; i++) {
         if (i > k) set.remove(nums[i-k-1]);
         for (int s : set) {
@@ -205,9 +192,10 @@ public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
     }
     return false;
 }
-
 ```
+
 #### Complexity analysis
+
 - Time complexity: O(n*min(n,k))
 - Space complexity: O(min(n,k)). depends on the size of HashSet
 
@@ -216,15 +204,15 @@ public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
 ```
 class Solution {
     public long getBucketId(long x, long w) {
-    	// here need to consider x is positive and negative
+        // here need to consider x is positive and negative
         return (x < 0) ? (x+1)/w-1 : x/w;
     }
-    
+
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if (t < 0) return false;
-        
+
         HashMap<Long, Long> map = new HashMap<>();
-        
+
         for (int i = 0; i < nums.length; i++) {
             long w = (long)t + 1;
             if (i > k) map.remove(getBucketId(nums[i-k-1], w));
@@ -238,7 +226,9 @@ class Solution {
     }
 }
 ```
+
 #### Complexity analysis
+
 - Time complexity: O(n)
 - Space complexity: O(min(n,k)). depends on the size of HashMap
 

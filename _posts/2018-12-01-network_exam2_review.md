@@ -3,12 +3,7 @@ layout: post
 title: "Computer Network Exam2 Review outline"
 date: 2018-12-01
 description: "Chapter 4,5,8,9"
-
-tags: network
-
-
-
-
+tags: Course
 ---
 
 ## network layer
@@ -406,8 +401,7 @@ forever
 
 - software defined networking
 
-- 
-### ICMP
+- ### ICMP
 
 - Internet Control Message protocol
 
@@ -582,8 +576,6 @@ yhHJRHhGJGhgg/12EpJ+lo8gE4vB3mqJhFEvZP9t6n7G6m5Gw2
 - Provides standard packet format for real-time application
 
 - runs over UDP
-
-
 
 ### Suppose you walk into a room, connect to Ethernet, and want to download a Web page. What are all the protocol steps that take place, starting from powering on your PC to getting the Web pageSuppose you walk into a room, connect to Ethernet, and want to download a Web
 

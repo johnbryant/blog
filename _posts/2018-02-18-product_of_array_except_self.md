@@ -1,10 +1,12 @@
 ---
+
 layout: post
 title: "Product of Array Except Self"
 date: 2018-02-18
 description: "Given an array nums[], return an array such that output[i] is equal to the product of all the elements of nums except nums[i]"
-tags: array
----   
+
+tags: Array Medium
+---
 
 ## Description
 
@@ -19,6 +21,7 @@ For example, given `[1,2,3,4]`, return `[24,12,8,6]`.
 Could you solve it with **constant space complexity**? (Note: The output array does not count as extra space for the purpose of space complexity analysis.)
 
 ## Analysis
+
 Solve it in O(n) time, O(n) space and without division, how does it possible?
 
 There is an idea of **2 directions**. The first iteration is from left-to-right, we calculate the product on left side of output[i]. The second iteration is from right-to-left, we calculate the product on right side of output[i], than we get the final result. No division, in O(n) time and space. Bingo!
@@ -44,7 +47,6 @@ public int[] productExceptSelf(int[] nums) {
         }
         return res;
     }
-
 ```
 
 很有意思呀，哈哈

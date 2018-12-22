@@ -1,12 +1,9 @@
 ---
-
 layout: post
 title: "Move Zeroes | 把0移到数组末尾"
 date: 2018-04-01
 description: "Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements."
-
- tags: array two_pointers easy
-
+tags: Array TwoPointers Easy
 ---
 
 ## Description | 描述

@@ -3,8 +3,8 @@ layout: post
 title: "Remove Duplicates from Sorted Array | O(1)空间内移除数组重复内容"
 date: 2018-05-11
 description: "Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length."
-tags: array two_pointers easy
----   
+tags: Array TwoPointers Easy
+---
 
 ## Description | 描述
 Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
@@ -26,7 +26,7 @@ public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         int index = 1;
         int currentValue = nums[0];
-        
+
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != currentValue) {
                 currentValue = nums[i];
@@ -42,6 +42,8 @@ time: O(n)
 space: O(1)。 因为在原数组上进行操作。
 
 
+
+
 ---
 
 **接下来，问题稍微升级一下**
@@ -49,6 +51,7 @@ space: O(1)。 因为在原数组上进行操作。
 **Let's make the problem more complex**
 
 ## Description
+
 Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length.
 
 Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
@@ -56,21 +59,23 @@ Do not allocate extra space for another array, you must do this by modifying the
 依旧是在O(1)空间内去重，不过这次，允许每个元素最多出现2次。
 
 ## Analysis
+
 还是相同的思路，不过这次要增加一个变量来判断重复的次数，当重复次数为2，则保留，当次数大于2，则忽略。
 
 Need a variable to count the repeat, when repeating 2 times, keep the value, otherwise, remove it.
 
-
 ## Approach
+
 ### Approach #1 (My solution)
+
 ```
 public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
-        
+
         int currentValue = nums[0];
         int currentRepeat = 1;
         int index = 1;
-        
+
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] == currentValue) {
                 if (currentRepeat == 1) {
@@ -83,11 +88,11 @@ public int removeDuplicates(int[] nums) {
                 currentRepeat = 1;
             }
         }
-        
+
         return index;
     }
-
 ```
+
 time: O(n)
 
 space: O(1)
@@ -102,6 +107,6 @@ public int removeDuplicates(int[] nums) {
             nums[i++] = n;
     return i;
 }
-
 ```
+
 Only 7 lines! The key is `n > nums[i-2]`, If the same number appears more than 2 times, n == nums[i-2].
